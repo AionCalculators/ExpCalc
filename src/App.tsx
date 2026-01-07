@@ -197,7 +197,7 @@ function App() {
           </a>
         </p>
         <a 
-          href="https://github.com/your-username/aion-exp-calc" 
+          href="https://github.com/AionCalculators/ExpCalc" 
           target="_blank" 
           rel="noopener noreferrer"
           className="github-link"
