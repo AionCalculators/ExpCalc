@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="wingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7cc8f5"/>
+      <stop offset="100%" style="stop-color:#3d8cc9"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:#fff;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#7cc8f5;stop-opacity:0.3"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="45" fill="#0d1520" stroke="url(#wingGrad)" stroke-width="2"/>
+  
+  <!-- Wing left -->
+  <path d="M25 50 Q20 35 30 25 Q40 30 45 45 Q35 50 25 50" fill="url(#wingGrad)" opacity="0.9"/>
+  
+  <!-- Wing right -->
+  <path d="M75 50 Q80 35 70 25 Q60 30 55 45 Q65 50 75 50" fill="url(#wingGrad)" opacity="0.9"/>
+  
+  <!-- Center orb -->
+  <circle cx="50" cy="50" r="15" fill="url(#glowGrad)"/>
+  <circle cx="50" cy="47" r="8" fill="#fff" opacity="0.6"/>
+  
+  <!-- XP text -->
+  <text x="50" y="78" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="12" fill="#7cc8f5">XP</text>
+</svg>

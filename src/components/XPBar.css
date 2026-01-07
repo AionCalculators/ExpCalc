@@ -1,0 +1,121 @@
+.xp-bar-container {
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.xp-bar {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 25, 35, 0.9) 0%,
+    rgba(30, 40, 55, 0.95) 50%,
+    rgba(20, 25, 35, 0.9) 100%
+  );
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid rgba(100, 160, 220, 0.3);
+  box-shadow: 
+    inset 0 2px 8px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(80, 140, 200, 0.1);
+  user-select: none;
+}
+
+.xp-bar:hover {
+  border-color: rgba(100, 160, 220, 0.5);
+  box-shadow: 
+    inset 0 2px 8px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(80, 140, 200, 0.2);
+}
+
+.xp-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    #5ca8e0 0%,
+    #3d8cc9 30%,
+    #2a6fa8 70%,
+    #1d5a8f 100%
+  );
+  transition: width 0.1s ease-out;
+  border-radius: 6px 0 0 6px;
+}
+
+.xp-bar-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  transition: width 0.1s ease-out;
+  border-radius: 6px 0 0 0;
+  pointer-events: none;
+}
+
+.xp-bar-segments {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.xp-bar-segment-line {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+.xp-bar-labels {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.xp-current {
+  color: #7cc8f5;
+  text-shadow: 0 0 10px rgba(124, 200, 245, 0.5);
+}
+
+.xp-divider {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.xp-total {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.xp-bar-percentage {
+  text-align: center;
+  margin-top: 0.25rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.xp-bar-hint {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.35);
+  font-style: italic;
+}

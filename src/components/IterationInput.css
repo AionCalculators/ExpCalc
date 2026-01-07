@@ -1,0 +1,54 @@
+.iteration-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background: rgba(30, 40, 55, 0.5);
+  border-radius: 12px;
+  border: 1px solid rgba(100, 160, 220, 0.15);
+}
+
+.iteration-label {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.iteration-description {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.5rem;
+}
+
+.iteration-value {
+  width: 180px;
+  height: 45px;
+  text-align: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  background: rgba(20, 30, 45, 0.8);
+  border: 2px solid rgba(100, 160, 220, 0.3);
+  border-radius: 8px;
+  color: #9dd3a8;
+  outline: none;
+  -moz-appearance: textfield;
+}
+
+.iteration-value::-webkit-outer-spin-button,
+.iteration-value::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.iteration-value::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.iteration-value:focus {
+  border-color: rgba(100, 200, 140, 0.6);
+  box-shadow: 0 0 15px rgba(100, 200, 140, 0.2);
+}
