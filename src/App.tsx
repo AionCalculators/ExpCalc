@@ -4,7 +4,7 @@ import {
   getXPForLevel, 
   calculateXPNeeded, 
   calculateIterations,
-  MAX_LEVEL,
+  getMaxLevel,
   MIN_LEVEL
 } from './data/xpData';
 import { useTranslation } from './i18n/LanguageContext';
@@ -72,19 +72,22 @@ function App() {
     return calculateIterations(version, currentLevel, currentXP, targetLevel, xpPerIteration);
   }, [version, currentLevel, currentXP, targetLevel, xpPerIteration]);
 
+  // Get max level for current version
+  const maxLevel = useMemo(() => getMaxLevel(version), [version]);
+
   // Validation errors
   const levelError = useMemo(() => {
-    if (currentLevel < MIN_LEVEL || currentLevel > MAX_LEVEL - 1) {
-      return { field: 'current', message: `${t.levelMustBeBetween} ${MIN_LEVEL} - ${MAX_LEVEL - 1}` };
+    if (currentLevel < MIN_LEVEL || currentLevel > maxLevel - 1) {
+      return { field: 'current', message: `${t.levelMustBeBetween} ${MIN_LEVEL} - ${maxLevel - 1}` };
     }
-    if (targetLevel < MIN_LEVEL + 1 || targetLevel > MAX_LEVEL) {
-      return { field: 'target', message: `${t.levelMustBeBetween} ${MIN_LEVEL + 1} - ${MAX_LEVEL}` };
+    if (targetLevel < MIN_LEVEL + 1 || targetLevel > maxLevel) {
+      return { field: 'target', message: `${t.levelMustBeBetween} ${MIN_LEVEL + 1} - ${maxLevel}` };
     }
     if (targetLevel <= currentLevel) {
       return { field: 'target', message: t.targetMustBeGreater };
     }
     return null;
-  }, [currentLevel, targetLevel, t]);
+  }, [currentLevel, targetLevel, maxLevel, t]);
 
   // Handle level change - reset XP when level changes
   const handleCurrentLevelChange = (newLevel: number) => {
@@ -99,7 +102,7 @@ function App() {
 
   // Handle current level increment (with validation)
   const handleCurrentLevelIncrement = (newLevel: number) => {
-    if (newLevel >= MIN_LEVEL && newLevel <= MAX_LEVEL - 1) {
+    if (newLevel >= MIN_LEVEL && newLevel <= maxLevel - 1) {
       setCurrentLevel(newLevel);
       setCurrentXP(0);
     }
@@ -107,14 +110,22 @@ function App() {
 
   // Handle target level increment (with validation)
   const handleTargetLevelIncrement = (newLevel: number) => {
-    if (newLevel > currentLevel && newLevel <= MAX_LEVEL) {
+    if (newLevel > currentLevel && newLevel <= maxLevel) {
       setTargetLevel(newLevel);
     }
   };
 
-  // Handle version change - keep levels but reset XP
+  // Handle version change - clamp levels to new max and reset XP
   const handleVersionChange = (newVersion: AionVersion) => {
+    const newMaxLevel = getMaxLevel(newVersion);
     setVersion(newVersion);
+    // Clamp levels if they exceed new max
+    if (currentLevel > newMaxLevel - 1) {
+      setCurrentLevel(newMaxLevel - 1);
+    }
+    if (targetLevel > newMaxLevel) {
+      setTargetLevel(newMaxLevel);
+    }
     // Reset current XP since XP requirements differ between versions
     setCurrentXP(0);
   };
@@ -148,7 +159,7 @@ function App() {
               onChange={handleCurrentLevelChange}
               onButtonChange={handleCurrentLevelIncrement}
               min={MIN_LEVEL}
-              max={MAX_LEVEL - 1}
+              max={maxLevel - 1}
               error={levelError?.field === 'current' ? levelError.message : undefined}
             />
             <LevelInput
@@ -157,7 +168,7 @@ function App() {
               onChange={handleTargetLevelChange}
               onButtonChange={handleTargetLevelIncrement}
               min={currentLevel + 1}
-              max={MAX_LEVEL}
+              max={maxLevel}
               error={levelError?.field === 'target' ? levelError.message : undefined}
             />
           </div>

@@ -1,4 +1,4 @@
-import { MAX_LEVEL, MIN_LEVEL } from '../data/xpData';
+import { MIN_LEVEL } from '../data/xpData';
 import { useTranslation } from '../i18n/LanguageContext';
 import './LevelInput.css';
 
@@ -18,7 +18,7 @@ export default function LevelInput({
   onChange,
   onButtonChange,
   min = MIN_LEVEL, 
-  max = MAX_LEVEL,
+  max = 65,
   error
 }: LevelInputProps) {
   const t = useTranslation();
