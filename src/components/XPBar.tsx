@@ -14,6 +14,7 @@ export default function XPBar({ totalXP, currentXP, onXPChange }: XPBarProps) {
   const t = useTranslation();
   const barRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [inputValue, setInputValue] = useState('');
 
   const calculateXPFromPosition = useCallback((clientX: number) => {
     if (!barRef.current) return currentXP;
@@ -42,6 +43,33 @@ export default function XPBar({ totalXP, currentXP, onXPChange }: XPBarProps) {
 
   const handleMouseLeave = () => {
     setIsDragging(false);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    // Allow empty or numeric input
+    if (value === '' || /^\d+$/.test(value)) {
+      setInputValue(value);
+    }
+  };
+
+  const handleInputBlur = () => {
+    if (inputValue !== '') {
+      const parsed = parseInt(inputValue, 10);
+      if (!isNaN(parsed)) {
+        // Clamp value between 0 and totalXP
+        const clampedValue = Math.max(0, Math.min(parsed, totalXP));
+        onXPChange(clampedValue);
+      }
+    }
+    setInputValue('');
+  };
+
+  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleInputBlur();
+      (e.target as HTMLInputElement).blur();
+    }
   };
 
   const percentage = totalXP > 0 ? (currentXP / totalXP) * 100 : 0;
@@ -76,6 +104,18 @@ export default function XPBar({ totalXP, currentXP, onXPChange }: XPBarProps) {
         <span className="xp-current">{currentXP.toLocaleString()}</span>
         <span className="xp-divider">/</span>
         <span className="xp-total">{totalXP.toLocaleString()}</span>
+      </div>
+      <div className="xp-input-container">
+        <label className="xp-input-label">{t.enterXPManually}</label>
+        <input
+          type="text"
+          className="xp-input"
+          value={inputValue}
+          onChange={handleInputChange}
+          onBlur={handleInputBlur}
+          onKeyDown={handleInputKeyDown}
+          placeholder={currentXP.toLocaleString()}
+        />
       </div>
       <div className="xp-bar-percentage">
         {percentage.toFixed(1)}%

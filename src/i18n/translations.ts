@@ -36,6 +36,7 @@ export interface Translations {
   currentXPProgress: string;
   xpBarHint: string;
   xpPerSegment: string;
+  enterXPManually: string;
   
   // Iteration Input
   xpPerIteration: string;
@@ -72,6 +73,7 @@ const translations: Record<Language, Translations> = {
     currentXPProgress: 'Current XP Progress',
     xpBarHint: 'Click or drag on the bar to set your current XP',
     xpPerSegment: 'XP per segment',
+    enterXPManually: 'Or enter XP manually',
     xpPerIteration: 'XP Per Iteration',
     iterationDescription: 'Enter XP gained per quest, kill, or action',
     iterationPlaceholder: 'e.g., 50000',
@@ -96,6 +98,7 @@ const translations: Record<Language, Translations> = {
     currentXPProgress: '현재 경험치 진행',
     xpBarHint: '바를 클릭하거나 드래그하여 현재 경험치를 설정하세요',
     xpPerSegment: '세그먼트당 경험치',
+    enterXPManually: '또는 경험치를 직접 입력하세요',
     xpPerIteration: '반복당 경험치',
     iterationDescription: '퀘스트, 처치, 또는 행동당 획득 경험치 입력',
     iterationPlaceholder: '예: 50000',
@@ -120,6 +123,7 @@ const translations: Record<Language, Translations> = {
     currentXPProgress: 'Aktueller EP-Fortschritt',
     xpBarHint: 'Klicken oder ziehen Sie auf die Leiste, um Ihre aktuellen EP einzustellen',
     xpPerSegment: 'EP pro Segment',
+    enterXPManually: 'Oder EP manuell eingeben',
     xpPerIteration: 'EP pro Durchgang',
     iterationDescription: 'EP pro Quest, Kill oder Aktion eingeben',
     iterationPlaceholder: 'z.B. 50000',
@@ -144,6 +148,7 @@ const translations: Record<Language, Translations> = {
     currentXPProgress: "Progression d'XP actuelle",
     xpBarHint: 'Cliquez ou faites glisser sur la barre pour définir votre XP actuelle',
     xpPerSegment: 'XP par segment',
+    enterXPManually: 'Ou entrez les XP manuellement',
     xpPerIteration: 'XP par itération',
     iterationDescription: 'Entrez les XP gagnés par quête, kill ou action',
     iterationPlaceholder: 'ex: 50000',
@@ -168,6 +173,7 @@ const translations: Record<Language, Translations> = {
     currentXPProgress: 'Текущий прогресс опыта',
     xpBarHint: 'Нажмите или перетащите по полосе, чтобы установить текущий опыт',
     xpPerSegment: 'Опыта за сегмент',
+    enterXPManually: 'Или введите опыт вручную',
     xpPerIteration: 'Опыт за итерацию',
     iterationDescription: 'Введите опыт за квест, убийство или действие',
     iterationPlaceholder: 'напр. 50000',
@@ -192,6 +198,7 @@ const translations: Record<Language, Translations> = {
     currentXPProgress: '当前经验进度',
     xpBarHint: '点击或拖动进度条来设置当前经验值',
     xpPerSegment: '每段经验',
+    enterXPManually: '或手动输入经验值',
     xpPerIteration: '每次获得经验',
     iterationDescription: '输入每次任务、击杀或行动获得的经验',
     iterationPlaceholder: '例如：50000',
@@ -216,6 +223,7 @@ const translations: Record<Language, Translations> = {
     currentXPProgress: '現在の経験値進捗',
     xpBarHint: 'バーをクリックまたはドラッグして現在の経験値を設定',
     xpPerSegment: 'セグメントあたりの経験値',
+    enterXPManually: 'または経験値を手動で入力',
     xpPerIteration: '1回あたりの経験値',
     iterationDescription: 'クエスト、討伐、アクションで得られる経験値を入力',
     iterationPlaceholder: '例：50000',
@@ -240,6 +248,7 @@ const translations: Record<Language, Translations> = {
     currentXPProgress: 'Progresso de XP Atual',
     xpBarHint: 'Clique ou arraste na barra para definir seu XP atual',
     xpPerSegment: 'XP por segmento',
+    enterXPManually: 'Ou digite o XP manualmente',
     xpPerIteration: 'XP por Iteração',
     iterationDescription: 'Digite o XP ganho por quest, kill ou ação',
     iterationPlaceholder: 'ex: 50000',
